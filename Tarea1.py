@@ -747,7 +747,7 @@ class DataBaseManager:
     #               Hp máximo.
     #               Estado.
     #               (Opcional) Un bool que indica si se debe mostrar un mensaje vía terminal al completar la operación o no.
-    # Retorna:      .
+    # Retorna:      No retorna.
     def BorrarEnSansanito(self, idPkmn, nombre, hpActual, hpTotal, estado, mensaje=True):
         if type(idPkmn) is not int or idPkmn < 1:
             print('[ERROR  ] Se ha intentado borrar una fila con una Id no válida en la tabla SANSANITO POKEMON.')
@@ -793,7 +793,7 @@ class DataBaseManager:
     
     # Descripción:  Obtiene la información del Pokémon con menor prioridad.
     # Recibe:       Un bool que determina si se busca la menor prioridad de Pokémon legendarios o corrientes.
-    # Retorna:      El registro completo del Pokémon con menor prioridad.
+    # Retorna:      Toda la información relevande del Pokémon con menor prioridad.
     def MenorPrioridadSansanito(self, legendario):
         if legendario:
             tabla = 'LEGENDARIOS'
@@ -841,9 +841,9 @@ class DataBaseManager:
 
         return cantidad
     
-    # Descripción:  .
-    # Recibe:       .
-    # Retorna:      .
+    # Descripción:  Obtiene los 10 Pokémon con mayor prioridad en la tabla SANSANITO.
+    # Recibe:       No recibe parámetros.
+    # Retorna:      Todos los datos de interés de las 10 filas con mayor valor PRIORIDAD.
     def Top10PrioridadSansanito(self):
         cursor = self.conexion.cursor()
         cursor.execute('''
@@ -859,9 +859,9 @@ class DataBaseManager:
 
         return top10
     
-    # Descripción:  .
-    # Recibe:       .
-    # Retorna:      .
+    # Descripción:  Obtiene los 10 Pokémon con menor prioridad en la tabla SANSANITO.
+    # Recibe:       No recibe parámetros.
+    # Retorna:      Todos los datos de interés de las 10 filas con menor valor PRIORIDAD.
     def Bottom10PrioridadSansanito(self):
         cursor = self.conexion.cursor()
         cursor.execute('''
@@ -873,9 +873,9 @@ class DataBaseManager:
 
         return bottom10
     
-    # Descripción:  .
-    # Recibe:       .
-    # Retorna:      .
+    # Descripción:  Obtiene todos los Pokémon legendarios de SANSANITO.
+    # Recibe:       No recibe parámetros.
+    # Retorna:      Los datos de interés de todas las filas cuyo valor LEGENDARIO = 1.
     def LegendariosEnSansanito(self):
         cursor = self.conexion.cursor()
         cursor.execute('''
@@ -892,9 +892,9 @@ class DataBaseManager:
             legendario[6] = int(legendario[6])
         return legendarios
     
-    # Descripción:  .
-    # Recibe:       .
-    # Retorna:      .
+    # Descripción:  Obtiene el Pokémon que lleva más tiempo ingresado en SANSANITO.
+    # Recibe:       No recibe parámetros.
+    # Retorna:      El registro con menor valor INGRESO.
     def MasViejoSansanito(self):
         cursor = self.conexion.cursor()
         cursor.execute('''
@@ -910,9 +910,9 @@ class DataBaseManager:
 
         return masViejo
     
-    # Descripción:  .
-    # Recibe:       .
-    # Retorna:      .
+    # Descripción:  Obtiene todos los Pokémon con determinado estado en SANSANITO.
+    # Recibe:       El estado a buscar.
+    # Retorna:      Todas los registros cuyo valor ESTADO = estado solicitado.
     def PokemonConEstadoSansanito(self, estado):
         if estado not in ESTADOS[1:]:
             print('[ERROR  ] Se ha intentado solicitar todos los Pokémon con un estado inexistente.')
@@ -935,9 +935,9 @@ class DataBaseManager:
 
         return pokemon
     
-    # Descripción:  .
-    # Recibe:       .
-    # Retorna:      .
+    # Descripción:  Obtiene el nombre más repetido en SANSANITO.
+    # Recibe:       No recibe parámetros.
+    # Retorna:      El nombre del Pokémon y cuantas instancias de él existen en SANSANITO.
     def PokemonMasRepetidoSansanito(self):
         cursor = self.conexion.cursor()
         cursor.execute('''
@@ -955,9 +955,9 @@ class DataBaseManager:
 
         return masRepetido
     
-    # Descripción:  .
-    # Recibe:       .
-    # Retorna:      .
+    # Descripción:  Obtiene todos los registros de SANSANITO.
+    # Recibe:       Un bool que deterima si ordenar los registros por prioridad o no.
+    # Retorna:      Todos los registros de SANSANITO.
     def MostrarSansanito(self, ordenarPrioridad):
         cursor = self.conexion.cursor()
         if ordenarPrioridad:
@@ -976,17 +976,17 @@ class DataBaseManager:
 
         return pokemon
 
-    # Descripción:  .
-    # Recibe:       .
-    # Retorna:      .
+    # Descripción:  Ejecuta los cambios en la base de datos.
+    # Recibe:       (Opcional) Un bool que indica si se debe mostrar un mensaje vía terminal al completar la operación o no.
+    # Retorna:      No retorna.
     def Commit(self, mensaje=True):
         self.conexion.commit()
         if mensaje:
             print('[DBMNGR ] Los cambios en las tablas se han guardado exitosamente.')
 
-# Descripción:  .
-# Recibe:       .
-# Retorna:      .
+# Descripción:  Ejecuta el programa.
+# Recibe:       No recibe parámetros.
+# Retorna:      No retorna.
 def Main():
     Consola()
 
