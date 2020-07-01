@@ -31,7 +31,7 @@ class Consola:
         
         # Aquí creo un diccionario comando-función que permitirá la interacción del programa vía consola.
         self.COMANDOS = {
-            'CREATE': self.Ingresar,
+            'CREATE': self.Crear,
             'READ': self.Leer,
             'UPDATE': self.Actualizar,
             'DELETE': self.Borrar,
@@ -160,11 +160,11 @@ class Consola:
     #               El Estado del Pokémon.
     # Retorns:      True si se ejecutó correctamente, False si no.
     def Crear(self, *argumentos):
-        if len(argumentos) == 0:
-            print('[ERROR  ] CREATE recibe el nombre del Pokémon a ingresar en SANSANITO POKEMON.')
-            return
-        nombrePkmn = argumentos[0]
-        return self.Ingresar(nombrePkmn)
+        if len(argumentos) != 3:
+            print('[ERROR  ] CREATE recibe el nombre del Pokémon a ingresar, su Hp actual y estado.\n[EXAMPLE] CREATE \"<POKÉMON>\" <HPACTUAL>/NONE <ESTADO>/NULL/NONE')
+            return False
+        nombrePkmn, hpActual, estado = argumentos[0:3]
+        return self.Ingresar(nombrePkmn, hpActual, estado)
 
     # Descripción:  Esta función corresponde a la operación 'READ' del CRUD. Lee la información de un Pokémon
     #               en el SANSANITO POKÉMON.
