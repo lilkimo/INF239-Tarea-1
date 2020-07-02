@@ -508,7 +508,11 @@ class DataBaseManager:
     # Retorna:      No retorna.
     def Conectar(self):
         credenciales = self.fileManager.ObtenerCredenciales()
-        self.conexion = pyodbc.connect(credenciales)
+        try:
+            self.conexion = pyodbc.connect(credenciales)
+        except:
+            print('[ERROR  ] Credenciales inválidas. Finalizando...')
+            exit()
 
     # Descripción:  Cierra la conexión con la base de datos.
     # Recibe:       No recibe parámetros.
