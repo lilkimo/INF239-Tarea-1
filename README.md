@@ -18,6 +18,8 @@ Me adhiero a la libertad de formato planteada en el foro de preguntas de la tare
 Siguiendo el hilo anterior, a la hora de desplegar datos no habrá distinción entre Pokémon si estos fueron ingresados con el mismo hp actual, mismo estado y al mismo tiempo. Que esto llegase a pasar se considerará **mal uso del programa** puesto que esta situación es bastante límite e imposible mediante el uso normal (y lógico) del programa.
 
 Al finalizar el programa todos los datos que se hayan generado se borrarán, por ende el programa no tiene memoria y acciones realizadas en sesiones anteriores no se verán reflejadas.
+
+A la hora de llenar el SANSANITO POKÉMON con registros aleatorios (Al inicio de la ejecución del programa) cabe la posibilidad de que la fecha de ingreso de algunos Pokémon sea mayor a la fecha actual del dispositivo.
 # Información relevante
 Este programa se reserva las palabras *NONE* y *NULL*:
 * NULL: Refiere a dejar el campo nulo, sin ningún valor.
