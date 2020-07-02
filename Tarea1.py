@@ -94,7 +94,7 @@ class Consola:
         
         if len(candidatos) > 1:
             ids = []
-            for candidato in candidatos:
+            for candidato in sorted(candidatos, key=lambda x: x[0]):
                 idPkmn = candidato[0]
                 ids.append(str(idPkmn))
 
