@@ -31,21 +31,21 @@ class Consola:
         
         # Aquí creo un diccionario comando-función que permitirá la interacción del programa vía consola.
         self.COMANDOS = {
-            'CREATE': self.Crear,
-            'READ': self.Leer,
-            'UPDATE': self.Actualizar,
-            'DELETE': self.Borrar,
+            'CREATE':       self.Crear,
+            'READ':         self.Leer,
+            'UPDATE':       self.Actualizar,
+            'DELETE':       self.Borrar,
             
-            'INSERT': self.Ingresar,
-            'TOP10': self.Top10,
-            'BOTTOM10': self.Bottom10,
-            'CONDITION': self.ListaPorEstado,
-            'LEGENDARIES': self.ListaLegendarios,
-            'OLDESTONE': self.MasViejo,
+            'INSERT':       self.Ingresar,
+            'TOP10':        self.Top10,
+            'BOTTOM10':     self.Bottom10,
+            'CONDITION':    self.ListaPorEstado,
+            'LEGENDARIES':  self.ListaLegendarios,
+            'OLDESTONE':    self.MasViejo,
             'MOSTREPEATED': self.MasRepetido,
-            'SHOWALL': self.Mostrar,
+            'SHOWALL':      self.Mostrar,
 
-            'EXIT': self.Salir
+            'EXIT':         self.Salir
         }
         self.Lector()
 
@@ -161,7 +161,7 @@ class Consola:
     # Retorns:      True si se ejecutó correctamente, False si no.
     def Crear(self, *argumentos):
         if len(argumentos) != 3:
-            print('[ERROR  ] CREATE recibe el nombre del Pokémon a ingresar, su Hp actual y estado.\n[EXAMPLE] CREATE \"<POKÉMON>\" <HPACTUAL>/NONE <ESTADO>/NULL/NONE')
+            print('[ERROR  ] CREATE recibe el nombre del Pokémon a ingresar, su Hp actual y estado.\n[EXAMPLE] CREATE <POKÉMON> <HPACTUAL>/NONE <ESTADO>/NULL/NONE')
             return False
         nombrePkmn, hpActual, estado = argumentos[0:3]
         return self.Ingresar(nombrePkmn, hpActual, estado)
@@ -172,7 +172,7 @@ class Consola:
     # Retorns:      True si se ejecutó correctamente, False si no.
     def Leer(self, *argumentos):
         if len(argumentos) != 1:
-            print('[ERROR  ] READ recibe el nombre del Pokémon perteneciente al SANSANITO POKEMON cuya información se desea conocer.\n[EXAMPLE] READ \"<POKÉMON>\"')
+            print('[ERROR  ] READ recibe el nombre del Pokémon perteneciente al SANSANITO POKEMON cuya información se desea conocer.\n[EXAMPLE] READ <POKÉMON>')
             return
         nombrePkmn = argumentos[0]
         pokemon = self.SeleccionarPokemon(nombrePkmn)
@@ -191,7 +191,7 @@ class Consola:
     # Retorns:      True si se ejecutó correctamente, False si no.
     def Actualizar(self, *argumentos):
         if len(argumentos) != 4:
-            print('[ERROR  ] UPDATE recibe el nombre del Pokémon a actualizar, el hp actual, estado y fecha de ingreso que se desea establecer.\n[EXAMPLE] UPDATE \"<POKÉMON>\" <HPACTUAL>/NULL/NONE <ESTADO>/NULL/NONE <FECHA DE INGRESO>/NULL/NONE')
+            print('[ERROR  ] UPDATE recibe el nombre del Pokémon a actualizar, el hp actual, estado y fecha de ingreso que se desea establecer.\n[EXAMPLE] UPDATE <POKÉMON> <HPACTUAL>/NULL/NONE <ESTADO>/NULL/NONE <FECHA DE INGRESO>/NULL/NONE')
             return False
         nombrePkmn = argumentos[0]
         pokemon = self.SeleccionarPokemon(nombrePkmn)
@@ -233,7 +233,7 @@ class Consola:
     # Retorns:      True si se ejecutó correctamente, False si no.
     def Borrar(self, *argumentos):
         if len(argumentos) == 0:
-            print('[ERROR  ] DELETE recibe el nombre del Pokémon a dar de alta en el SANSANITO POKEMON.\n[EXAMPLE] DELETE \"<POKÉMON>\"')
+            print('[ERROR  ] DELETE recibe el nombre del Pokémon a dar de alta en el SANSANITO POKEMON.\n[EXAMPLE] DELETE <POKÉMON>')
             return False
         nombrePkmn = argumentos[0]
         pokemon = self.SeleccionarPokemon(nombrePkmn)
@@ -252,7 +252,7 @@ class Consola:
     # Retorns:      True si se ejecutó correctamente, False si no.
     def Ingresar(self, *argumentos):
         if len(argumentos) != 3:
-            print('[ERROR  ] INSERT recibe el nombre del Pokémon a ingresar, su Hp actual y estado.\n[EXAMPLE] INSERT \"<POKÉMON>\" <HPACTUAL>/NONE <ESTADO>/NULL/NONE')
+            print('[ERROR  ] INSERT recibe el nombre del Pokémon a ingresar, su Hp actual y estado.\n[EXAMPLE] INSERT <POKÉMON> <HPACTUAL>/NONE <ESTADO>/NULL/NONE')
             return False
         nombrePkmn = argumentos[0]
         
@@ -598,7 +598,9 @@ class DataBaseManager:
 
         return info
 
-    # Descripción:  Crea la tabla SANSANITO (Correspondiente al SANSANITO POKÉMON) en la base de datos.
+    # Descripción:  Crea la tabla SANSANITO (Correspondiente al SANSANITO POKÉMON) en la base de datos,
+    #               también crea un trigger para la tabla que actualiza la prioridad y 2 vistas para
+    #               legendarios y los 10 Pokémon con menor prioridad respectivamente.
     # Recibe:       No recibe parámetros.
     # Retorna:      No retorna.
     def CrearTablaSansanito(self):

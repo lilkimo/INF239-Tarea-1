@@ -1,42 +1,46 @@
-Comandos:
+# Integrantes
+Zarko Kuljis, 2018235233-7
+# Descripción
+Este programa cumple como gestor de una base de datos específica desarrollada para el llamado *SANSANITO POKÉMON*.
+# Consideraciones
+weás que importé
+# Información relevante
+Este programa se reserva las palabras 'NONE' y 'NULL'.
+* NULL: Refiere a dejar el campo en nulo, sin ningún valor.
+* NONE: Esta palabra cumplirá dos funciones dependiendo de comando ejecutado:
+    1. En comandos de actualización: No modifica el valor del campo especificado; a diferencia de NULL, conservará el valor anterior en tabla del parámetro al que se refiera.
+    2. En comandos de creación: Establecerá un valor aleatorio o conveniente.
 
-CREATE [Datos] [SANSANITO POKEMON]
-    La operación «CREATE» añade una nueva fila en la tabla POYO.
-    [Datos] corresponde a los datos del Pokémon en el formato de la tabla POYO.
-Estos deben ir en el orden especificado en la Tarea (Número en la PokéDex, Nombre, Type 1, etc...) y separados por comas («,»); Si un dato no existe o se desconoce escriba «Missing» (Sin las comillas).
-Si no escribe todos los datos se asumirán los faltantes como Missing.
-    [SANSANITO POKEMON] es un valor booleano que por default es False.
-Declarar este valor como True insertará forzosamente a la tabla SANSANITO POKEMON, omitiendo el protocolo y así pudiendo generar resultados no deseados (Por ejemplo; Que esta tabla tenga 51 Pokémon en ella).
-Todos los datos que no posean equivalente en la tabla POYO se establecerán nulos o tomarán el valor Default.
-Se recomienda no declarar este parámetro o declararlo False. Para inserciones preferiblemente use «INSERT_PKMN»
-Ejemplo:
-    In:CREATE 6,Charizard,Missing,Flying
-*Este comando es equivalente a:
-    In:CREATE 6,Charizard,Missing,Flying,Missing,Missing False
+Además, si se desean ingresar parámetros que contengan espacios deben ser introducidos entre comillas dobles ("), de lo contrario se interpretará como más de un valor.
 
-READ [Tipo de Dato] [Dato]
-    La operación «READ» lee la información de una fila en la tabla POYO, en el orden que se define en la tarea.
-Si el Pokémon también se encuentra en SANSANITO POKEMON, leerá los datos en el formato de esta tabla y mostrará tantas instancias como existan, ordenadas arbitrariamente. Añadiendo los datos exclusivos de esta tabla.
-    [Tipo de Dato] es la definición del dato que se ingresará a continuación para así filtrar la tabla.
-    [Dato] refiere al valor del tipo de dato especificado anteriormente.
-Ejemplo:
-    In[1] :READ nombre Bulbasaur
-    Out[1]:1,Bulbasaur,Grass,Missing,318
-*Este Pokémon no está en la tabla SANSANITO POKEMON
+Ej:
 
-    In[1] :Read pokedex 1
-    Out[1]:1,1,Bulbasaur,Grass,Missing,28,318,False,Missing,12-10-1998 21:05:43,290
-    Out[2]:1,1,Bulbasaur,Grass,Missing,54,318,False,Paralizado,12-17-1998 10:47:02,274
-*Este Pokémon está en la tabla SANSANITO POKEMON, 2 veces.
+`CREATE "Mr. Mime" 10 Quemado`
 
-//Pokemones con hp actual >=0
+Creará un 'Mr. Mime' con 10 de hp y con el estado 'Quemado'.
+# Comandos
+`CREATE <POKÉMON> <HPACTUAL>/NONE <ESTADO>/NULL/NONE`
 
+`READ <POKÉMON>`
 
-=====BORRAR=====
-TRIGGERS:
-Al cambiar el HP_Actual y/o el ESTADO debe cambiar la prioridad.
+`UPDATE <POKÉMON> <HPACTUAL>/NULL/NONE <ESTADO>/NULL/NONE <FECHA DE INGRESO>/NULL/NONE`
 
-VISTAS:
-Consultas sobre la tabla.
-================
+`DELETE <POKÉMON>`
 
+`INSERT <POKÉMON> <HPACTUAL>/NONE <ESTADO>/NULL/NONE`
+
+`TOP10`
+
+`BOTTOM10`
+
+`CONDITION <ESTADO>/NONE`
+
+`LEGENDARIES`
+
+`OLDESTONE`
+
+`MOSTREPEATED`
+
+`SHOWALL`
+
+`EXIT`
