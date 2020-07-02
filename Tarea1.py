@@ -93,19 +93,29 @@ class Consola:
             return
         
         if len(candidatos) > 1:
-            iterador = 1
+            ids = []
             for candidato in candidatos:
+                idPkmn = candidato[0]
+                ids.append(str(idPkmn))
+
                 if candidato[8] == None:
-                    mensaje ='[CONSOLE] {0}.- {1} {2}/{3} ({5} de prioridad), ingresado el día {6}.'
+                    mensaje ='[CONSOLE] Id: {0}, {1} {2}/{3} ({5} de prioridad), ingresado el día {6}.'
                 else:
-                    mensaje ='[CONSOLE] {0}.- {1} {2}/{3} {4} ({5} de prioridad), ingresado el día {6}.'
-                print(mensaje.format(iterador, nombrePkmn, candidato[5], candidato[6], candidato[8], candidato[10], candidato[9].strftime('%d-%m-%Y a las %H:%M')))
-                iterador += 1
-            seleccionado = input('[CONSOLE] Seleccione el índice del Pokémon que desea seleccionar: ')
-            if seleccionado not in map(str, range(1, iterador)):
-                print('[ERROR  ] Índice no válido.')
+                    mensaje ='[CONSOLE] Id: {0}, {1} {2}/{3} {4} ({5} de prioridad), ingresado el día {6}.'
+                print(mensaje.format(idPkmn, nombrePkmn, candidato[5], candidato[6], candidato[8], candidato[10], candidato[9].strftime('%d-%m-%Y a las %H:%M')))
+            
+            seleccionado = input('[CONSOLE] Seleccione el Id del Pokémon que desea seleccionar: ').strip()
+            if seleccionado not in ids:
+                print('[ERROR  ] Id no válido.')
+                return None
             else:
-                seleccionado = candidatos[int(seleccionado) - 1]
+                for candidato in candidatos:
+                    if str(candidato[0]) == seleccionado:
+                        seleccionado = candidato
+                        break
+                if type(seleccionado) == str:
+                    print('[ERROR  ] Inesperadamente el programa a sido incapaz de identificar al Pokémon. Cerrando...')
+                    self.Salir()
         else:
             seleccionado = candidatos[0]
         
@@ -191,7 +201,7 @@ class Consola:
     # Retorns:      True si se ejecutó correctamente, False si no.
     def Actualizar(self, *argumentos):
         if len(argumentos) != 4:
-            print('[ERROR  ] UPDATE recibe el nombre del Pokémon a actualizar, el hp actual, estado y fecha de ingreso que se desea establecer.\n[EXAMPLE] UPDATE <POKÉMON> <HPACTUAL>/NULL/NONE <ESTADO>/NULL/NONE <FECHA DE INGRESO>/NULL/NONE')
+            print('[ERROR  ] UPDATE recibe el nombre del Pokémon a actualizar, el hp actual, estado y fecha de ingreso que se desea establecer.\n[EXAMPLE] UPDATE <POKÉMON> <HPACTUAL>/NONE <ESTADO>/NULL/NONE <FECHA DE INGRESO>/NULL/NONE')
             return False
         nombrePkmn = argumentos[0]
         pokemon = self.SeleccionarPokemon(nombrePkmn)
@@ -357,7 +367,7 @@ class Consola:
     # Retorna:      Todas las filas con determinado valor ESTADO.
     def ListaPorEstado(self, *argumentos):
         if len(argumentos) != 1:
-            print('[ERROR  ] CONDITION recibe sólo el estado a filtrar.\n[EXAMPLE] CONDITION <ESTADO>/NONE')
+            print('[ERROR  ] CONDITION recibe sólo el estado a filtrar.\n[EXAMPLE] CONDITION <ESTADO>/NULL/NONE')
             return
         
         estado = self.Estado(argumentos[0])
@@ -767,7 +777,7 @@ class DataBaseManager:
             if estado == None:
                 print('[DBMNGR ] Se removió un {} {}/{} de la tabla SANSANITO.'.format(nombre, hpActual, hpTotal))
             else:
-                print('[DBMNGR ] Se removió un {} {}/{} {} de la tabal SANSANITO.'.format(nombre, hpActual, hpTotal, estado))
+                print('[DBMNGR ] Se removió un {} {}/{} {} de la tabla SANSANITO.'.format(nombre, hpActual, hpTotal, estado))
 
     # Descripción:  Actualiza una fila de la tabla SANSANITO.
     # Recibe:       El id del Pokémon a actualizar.
