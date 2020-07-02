@@ -378,6 +378,8 @@ class Consola:
         pokemon = list(map(lambda info: (info[2], info[5], info[6], info[8], info[9], info[10]), self.dbmngr.PokemonConEstadoSansanito(estado)))
         if len(pokemon) > 0:
             print(mostrarTabla(pokemon, headers=['Nombre', 'HP Act', 'HP Max', 'Estado', 'Ingreso', 'Prioridad']))
+        elif estado == None:
+            print('[INFO   ] No hay Pokémon sin estado en el SANSANITO POKEMON.')
         else:
             print('[INFO   ] No hay Pokémon {}s en el SANSANITO POKEMON.'.format(estado))
         
@@ -666,7 +668,7 @@ class DataBaseManager:
         # Descripción:  Genera una fecha aleatoria.
         # Recibe:       El año mínimo de generación.
         #               El año máximo de generación.
-        # Retorna:      Una fecha aleatoria entre ambas fechas previstas.
+        # Retorna:      Una fecha aleatoria entre ambas años provistos.
         def gen_datetime(min_year=2018, max_year=datetime.now().year):
             start = datetime(min_year, 1, 1, 00, 00, 00)
             years = max_year - min_year + 1
@@ -926,7 +928,7 @@ class DataBaseManager:
     # Recibe:       El estado a buscar.
     # Retorna:      Todas los registros cuyo valor ESTADO = estado solicitado.
     def PokemonConEstadoSansanito(self, estado):
-        if estado not in ESTADOS[1:]:
+        if estado not in ESTADOS:
             print('[ERROR  ] Se ha intentado solicitar todos los Pokémon con un estado inexistente.')
         
         cursor = self.conexion.cursor()
