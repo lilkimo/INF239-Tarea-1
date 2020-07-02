@@ -6,6 +6,7 @@ Este programa cumple como gestor de una base de datos específica desarrollada p
 El usuario deberá ejecutar comandos vía terminal con el programa en ejecución para realizar operaciones sobre la base de datos.
 # Consideraciones
 Este programa se realizó en la versión 3.7.7 de Python.
+Además, requiere de la librería no incorporada tabulate (https://github.com/astanin/python-tabulate).
 
 Un Pokémon legendario, en caso de no haber suficiente espacio, sólo podrá reemplazar a otro Pokémon legendario. Esto **no se cumple para los Pokémon no-legendarios** (Desde ahora llamados *corrientes*); un Pokémon corriente puede reemplazar, tanto a otros Pokémon corrientes como a legendarios.
 
