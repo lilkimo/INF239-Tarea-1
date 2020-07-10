@@ -1,5 +1,5 @@
 # Integrantes
-Zarko Kuljis, 2018235233-7
+Zarko Kuljis, 201823523-7
 # Descripción
 Este programa cumple como gestor de una base de datos específica desarrollada para el llamado *SANSANITO POKÉMON*.
 
