@@ -46,7 +46,7 @@ Es importante resaltar que todos estos comandos se aplican sobre el SANSANITO PO
 ## CREATE
 Agrega un Pokémon.
 
-`CREATE <POKÉMON> <HPACTUAL>/NONE <ESTADO>/NULL/NONE`
+`CREATE <POKÉMON> <HPACTUAL/NONE> <ESTADO/NULL/NONE>`
 
 ## READ
 Lee toda la información de un Pokémon.
@@ -56,7 +56,7 @@ Lee toda la información de un Pokémon.
 ## UPDATE
 Actualiza la información de un Pokémon.
 
-`UPDATE <POKÉMON> <HPACTUAL>/NONE <ESTADO>/NULL/NONE <FECHA DE INGRESO>/NULL/NONE`
+`UPDATE <POKÉMON> <HPACTUAL/NONE> <ESTADO/NULL/NONE> <FECHA DE INGRESO/NULL/NONE>`
 
 ## DELETE
 Borra la información de un Pokémon.
@@ -66,7 +66,7 @@ Borra la información de un Pokémon.
 ## INSERT
 Agrega un Pokémon.
 
-`INSERT <POKÉMON> <HPACTUAL>/NONE <ESTADO>/NULL/NONE`
+`INSERT <POKÉMON> <HPACTUAL/NONE> <ESTADO/NULL/NONE>`
 
 ## TOP 10
 Muestra los 10 Pokémon con más prioridad.
@@ -81,7 +81,7 @@ Muestra los 10 Pokémon con menos prioridad.
 ## CONDITION
 Muestra todos los Pokémon con determinado estado.
 
-`CONDITION <ESTADO>/NULL/NONE`
+`CONDITION <ESTADO/NULL/NONE>`
 
 ## LEGENDARIES
 Muestra todos los Pokémon legendarios.
